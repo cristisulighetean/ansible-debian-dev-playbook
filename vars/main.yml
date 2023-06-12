@@ -1,0 +1,20 @@
+---
+# Packages to install
+apt_packages:
+  - git
+  - tmux
+  - tree
+  - 
+
+
+# Dotfiles role configuration
+configure_dotfiles: true
+
+dotfiles_repo: https://github.com/cristisulighetean/dotfiles
+dotfiles_repo_accept_hostkey: true
+dotfiles_repo_local_destination: ~/Development/GitHub/dotfiles
+dotfiles_files:
+  - .zshrc
+  - .gitignore
+  - .vimrc
+  - .tmux.conf
