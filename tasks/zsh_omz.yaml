@@ -1,0 +1,26 @@
+- name: Find the location of zsh shell
+  ansible.builtin.command: which zsh
+  register: zsh_location
+  changed_when: false
+
+- name: Display zsh location
+  ansible.builtin.debug:
+    var: zsh_location.stdout
+
+- name: Change shell to zsh
+  ansible.builtin.user:
+    name: "{{ username }}"
+    shell: "{{ zsh_location.stdout }}"
+  become: true
+
+- name: Download oh-my-zsh installation script
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: /tmp/install_oh_my_zsh.sh
+    mode: '0755'
+
+- name: Execute oh-my-zsh installation script
+  ansible.builtin.command:
+    cmd: sh /tmp/install_oh_my_zsh.sh
+  args:
+    creates: "/home/{{ username }}/.zshrc"

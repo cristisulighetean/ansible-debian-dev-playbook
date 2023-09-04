@@ -8,6 +8,16 @@ What does it do?
 2. Install all the specified packages in `vars/main.yaml`
 3. Sets up the dotfiles (using geerlingguy.dotfiles role)
 
+How to use it?
+
+Install the geerlingguy.dotfiles role local to this playbook
+
+```sh
+ansible-galaxy install geerlingguy.dotfiles -p roles/
+```
+
+TODO: Setup of dotfiles role
+
 ## Tools to still install
 
 1. VS Code

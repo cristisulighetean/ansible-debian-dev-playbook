@@ -1,21 +1,21 @@
 ---
-- name: Ubuntu development machine setup
-  hosts: ubuntu_dev
+- name: Debian development machine setup
+  hosts: all
   become: true
 
   vars_files:
-    - vars/main.yml
+    - vars/main.yaml
 
   pre_tasks:
   - name: Update apt cache if needed
-    apt:
+    ansible.builtin.apt:
       update_cache: yes
       cache_valid_time: 3600
 
   tasks:
-    - import_tasks: tasks/common.yml
-    - import_tasks: tasks/install_apt.yml
-    - import_tasks: tasks/docker.yml
+    - ansible.builtin.import_tasks: tasks/packages-install.yaml
+    - ansible.builtin.import_tasks: tasks/zsh_omz.yaml
+    - ansible.builtin.import_tasks: tasks/docker.yaml
 
 
   roles:
