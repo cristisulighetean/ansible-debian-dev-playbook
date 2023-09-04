@@ -1,6 +1,6 @@
 ---
 - name: Debian development machine setup
-  hosts: all
+  hosts: machines
   become: true
 
   vars_files:
